@@ -115,14 +115,14 @@ jobs:
       - name: "Upload wheels"
         uses: actions/upload-artifact@v5
         with:
-          name: wheels-${{ matrix.target }}
+          name: wheels-${{ matrix.platform.target }}
           path: dist
       - name: "Archive binary"
         shell: bash
         run: |
           set -euo pipefail
 
-          TARGET=${{ matrix.target }}
+          TARGET=${{ matrix.platform.target }}
           ARCHIVE_NAME=ty-$TARGET
           ARCHIVE_FILE=$ARCHIVE_NAME.tar.gz
 
@@ -133,7 +133,7 @@ jobs:
       - name: "Upload binary"
         uses: actions/upload-artifact@v5
         with:
-          name: artifacts-${{ matrix.target }}
+          name: artifacts-${{ matrix.platform.target }}
           path: |
             *.tar.gz
             *.sha256
@@ -151,7 +151,7 @@ jobs:
           - target: loongarch64-unknown-linux-musl
             arch: loongarch64
             manylinux: 'musllinux_1_2'
-            maturin_docker_options: ''
+            # maturin_docker_options: ''
 
     steps:
       - uses: actions/checkout@v6
@@ -174,14 +174,14 @@ jobs:
       - name: "Upload wheels"
         uses: actions/upload-artifact@v5
         with:
-          name: wheels-${{ matrix.target }}
+          name: wheels-${{ matrix.platform.target }}
           path: dist
       - name: "Archive binary"
         shell: bash
         run: |
           set -euo pipefail
 
-          TARGET=${{ matrix.target }}
+          TARGET=${{ matrix.platform.target }}
           ARCHIVE_NAME=ty-$TARGET
           ARCHIVE_FILE=$ARCHIVE_NAME.tar.gz
 
@@ -192,7 +192,7 @@ jobs:
       - name: "Upload binary"
         uses: actions/upload-artifact@v5
         with:
-          name: artifacts-${{ matrix.target }}
+          name: artifacts-${{ matrix.platform.target }}
           path: |
             *.tar.gz
             *.sha256
