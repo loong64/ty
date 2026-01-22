@@ -109,7 +109,7 @@ jobs:
         uses: loong64/maturin-action@main
         with:
           target: ${{ matrix.platform.target }}
-          manylinux: auto
+          manylinux: ${{ matrix.platform.manylinux }}
           docker-options: ${{ matrix.platform.maturin_docker_options }}
           args: --release --locked --out dist
       - name: "Upload wheels"
@@ -168,7 +168,7 @@ jobs:
         uses: loong64/maturin-action@main
         with:
           target: ${{ matrix.platform.target }}
-          manylinux: auto
+          manylinux: ${{ matrix.platform.manylinux }}
           docker-options: ${{ matrix.platform.maturin_docker_options }}
           args: --release --locked --out dist
       - name: "Upload wheels"
